@@ -1,4 +1,4 @@
-# WhiteDukesDZ - LIT CTF 2025 Writeup: Group Chat Challenge
+# WhiteDukesDZ - Kaspersky CTF 2025 Writeup: Bubble Revenge Challenge
 
 ![WhiteDukesDZ Logo](challenge/web-bubble-revenge.png)
 
