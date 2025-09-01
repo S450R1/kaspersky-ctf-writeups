@@ -64,7 +64,7 @@ script.onload = function() {
 document.head.appendChild(script);
 ```
 
-If successful, this script will join the `secret_announcements` room and display the flag as a news message:
+If successful, this script will join the `secret_announcements` room and display the flag as an announcement message:
 
 ![WhiteDukesDZ Logo](demonstration/web-k-newswire-flag.png)
 
