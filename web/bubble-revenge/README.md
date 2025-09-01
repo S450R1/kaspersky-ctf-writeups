@@ -107,9 +107,13 @@ After reviewing the `backend` files, we identified these main endpoints:
     - If no draft is found, returns an empty list and a message; otherwise, returns the draft data and a success message with a `200` status.
 
 All user content for both `posts` and `comments` is processed through a custom BBCode parser implemented in `bb_parser.py` (located in the `utils` folder):
+    
     - The parser supports a variety of BBCode tags, including `[youtube]`, `[yt]`, `[img]`, `[h1]`, and `[sup]`, allowing users to embed YouTube videos, images, and styled text in their posts and comments.
+    
     - The parser sanitizes input to prevent the use of dangerous protocols (such as `javascript:`, `data:`, or `vbscript:`) in tag options.
+    
     - For images, the parser allows specifying width and height attributes, which are also sanitized.
+    
     - All parsed content is rendered as HTML.
 
 ### Admin Bot Implementation
